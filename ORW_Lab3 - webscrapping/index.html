@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+	<meta charset="UTF-8">
+	<title>Web scrapping - Pobieranie zdjęć z serwisu Flickr</title>
+	<link rel="stylesheet" href="css/style.css">
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu:300' rel='stylesheet' type='text/css'>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$('#url').on('keyup', function(e){
+			if(e.which == 13) {
+				$('.imageholder').html('');
+				$('.loader').html('<img src="img/loader.gif">');
+				var url = $(this).val();
+				$.ajax({
+					url: 'process.php', 		// Asynchroniczny dostęp do pliku PHP
+					data: 'url='+url,
+					dataType: 'json',
+					type: 'POST',
+					success: function(response){
+						if(response.status == 'Success') {
+							$('.loader').html('');
+							for(var i=0; i<response.imageset.length; i++) {
+								var url = response.imageset[i];
+								if(url != false)
+									$('.imageholder').append('<img class="flickrimage" src="'+url+'">');
+							}
+						}
+					},
+					error: function(e){
+						$('.loader').html('');
+						$('.imageholder').append('<h3>Błąd przetwarzania żądania!</h3>');
+					}
+				});
+			}
+		});
+	});
+	</script>
+</head>
+<body>
+
+	<div class="container">
+		<div class="holder">
+			<input type="text" placeholder="https://www.flickr.com/cameras/nikon/d7000/" id="url"> 
+			<span class="loader"></span>
+			<div class="imageholder">
+			</div>
+		</div>
+	</div>
+</body>
+</html>

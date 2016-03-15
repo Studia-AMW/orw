@@ -1,0 +1,66 @@
+body {
+	font-family: 'Ubuntu', sans-serif;
+}
+
+.container {
+	width: 600px;
+	height: auto;
+	background: #F6F7F8;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+
+.holder {
+	padding: 20px;
+}
+
+#url {
+	border-radius: 4px;
+	border: 1px solid #E7E7E7;
+	padding: 15px;
+	outline: none;
+	width: 530px;
+	margin-bottom: 15px;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+
+#demo-header {
+	height: 150px;
+	width: 100%;
+	background: url('http://www.jqueryajaxphp.com/wp-content/uploads/2015/01/JAP-Logo.png') center no-repeat !important;
+	margin-bottom: 25px;
+	border-bottom: 1px solid #999;
+	padding-bottom: 25px;
+}
+     
+ footer {
+	width: 786px;
+	font: normal 16px Arial, Helvetica, sans-serif;
+	padding: 15px 35px;
+	position: fixed;
+	bottom: 0;
+	left: 50%;
+	margin-left: -420px;
+	background-color: #1f1f1f;
+	background-image: -webkit-linear-gradient(top, #1f1f1f, #101010);
+	background-image: -moz-linear-gradient(top, #1f1f1f, #101010);
+	background-image: linear-gradient(top, #1f1f1f, #101010);
+	border-radius: 2px 2px 0 0;
+	box-shadow: 0 -1px 4px rgba(0,0,0,0.4);
+	z-index: 1;
+	text-align: center;
+}
+
+a {
+	color: #FFFFFF;
+}
+
+img {
+	max-width: 270px;
+	max-height: 200px;
+	border: 2px solid #CCC;
+	display: inline;
+	margin: 3px;
+	border-radius: 5px;
+}

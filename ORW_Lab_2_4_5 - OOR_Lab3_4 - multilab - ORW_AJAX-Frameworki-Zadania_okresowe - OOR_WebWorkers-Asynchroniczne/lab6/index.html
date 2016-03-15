@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ORW_Lab6_Siemaszko - WebAPI</title>
+	<meta charset='utf-8'>
+
+<script>
+
+function pokazKraje(str) {
+    if (str == "") {
+        document.getElementById("kraje").innerHTML = "";
+        return;
+    } else { 
+        if (window.XMLHttpRequest) {
+            // obsługa przeglądarek: IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // obsługa przeglądarek: IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                document.getElementById("kraje").innerHTML = xmlhttp.responseText;
+            }
+        };
+        xmlhttp.open("GET","kraje.php?q="+str,true);  // Wybór kraju metodą GET
+        xmlhttp.send();
+    }
+}
+</script>
+
+</head>
+
+<body>
+
+<form>
+	<select name="listaKraje" onchange="pokazKraje(this.value)">
+	  <option value="">Wybierz kraj:</option>
+	  <option value="1">Polska</option>
+	  <option value="2">Norwegia</option>
+	  <option value="3">Hiszpania</option>
+	  <option value="4">Francja</option>
+	</select>
+</form>
+
+<br>
+
+<div id="kraje"><b>Kraje zostaną wyświetlone tutaj</b></div>
+
+</body>
+</html>
